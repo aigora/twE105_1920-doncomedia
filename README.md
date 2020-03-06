@@ -9,6 +9,6 @@ Iván Arribas Hernández, ivan8rbs; Aitor Chamorro Arias, aitorchamorro; Samuel 
 
 ## Objetivos del trabajo
 
-Aprender nociones de nivel medio sobre el lenguaje de programación C.
+Aprender nociones de nivel medio sobre el lenguaje de programación C. hey
 Demostrar las minúsculas probabilidades de éxito en el mundo de los juegos de azar.
 Así como los efectos negativos que estos pueden suponer sobre la economía del individuo que los practica.
