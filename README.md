@@ -1,6 +1,6 @@
-# Título del trabajo
+# Salón de Juegos DonComedia.
 
-Salón de juegos de DonComedia. El trabajo consistirá en un salón virtual que te ofrecerá un amplio abanico (3 ó 4) de juegos de azar
+El trabajo consistirá en un salón virtual que te ofrecerá un amplio abanico (3 ó 4) de juegos de azar
 típicos de los salones de juegos en los que se podrá elegir la cantidad de dinero que quiere apostar y multiplicar o perder este.
 
 ## Integrantes del equipo
