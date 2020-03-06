@@ -6,7 +6,9 @@ típicos de los salones de juegos en los que se podrá elegir la cantidad de din
 ## Integrantes del equipo
 
 -Iván Arribas Hernández-ivan8rbs
+
 -Aitor Chamorro Arias-aitorchamorro
+
 -Samuel Chillari Sánchez-SamuelChillari.
 
 ## Objetivos del trabajo
