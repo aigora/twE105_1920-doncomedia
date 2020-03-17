@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main()
+{
+	int edad,dia,mes,year;
+	char s,nombre[31];
+	do
+	{
+	int edad,dia,mes,year;
+	char nombre[31];
+	printf("Bienvenido al casino de DonComedia!!! (Solo apto para mayores de edad)\n");
+	printf("A continuacion introduce los siguientes datos\n");
+	printf("Nombre completo\n");
+	scanf(" %30[^\n]", nombre);
+	printf("Nombre: %s\n", nombre);
+	printf("Fecha de nacimiento (dd mm yyyy)\n");
+	scanf(" %d %d %d", &dia,&mes,&year);
+	printf("Fecha de nacimiento: %d %d %d\n", dia,mes,year);
+	edad=2019-year;
+	if (edad>=18)
+	{//se ejecutara el programa	
+	break;
+	}
+	else
+	{
+	printf("Desea reiniciar el programa? Pulse 's'\n");
+    scanf("%s",&s);}
+	}
+	while(s=='s');
+	return 0;
+}
