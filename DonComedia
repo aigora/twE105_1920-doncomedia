@@ -27,5 +27,39 @@ int main()
     scanf("%s",&s);}
 	}
 	while(s=='s');
+	{
+        int op;
+        char p;
+        printf("Perfecto.\nAhora piense en que juego quiere participar:\n\n");
+
+        printf("Actualmente disponemos de tragaperras(1), blackjack(2), ruleta(3) o atrapa un millon(4)\n\n ");
+        do
+
+        {
+
+        printf("Escribe el numero del juego al que quiere partcipirar porfavor:\n\n");
+        scanf("%i",&op);
+
+        switch(op)
+       {
+        case 1:
+	  printf("Has escojido jugar a las tragaperras.\n\n");
+        break;
+        case 2:
+          printf("Has escojido jugar a la ruleta. Apueste a numeros rojos,negros o a un numero en concreto\n\n");
+        break;
+        case 3:
+          printf("Has escojido jugar a el blackjack.\n");
+        break;
+        case 4:
+          printf("4)Has escojido atrapa un millon,consistira en acertar 15 preguntas donde se daran 4 opciones.Si acierta la primera pregunta avanzara a la siguiente y lo mas importante ¡Conseguira mas dinero!\n\n");
+        break;
+    
+        }
+        printf("Si desea repetir la eleccion de un juego pulse 'p'\n");
+        scanf("%s",&p);
+        }
+        while(p=='p');
+	}
 	return 0;
 }
