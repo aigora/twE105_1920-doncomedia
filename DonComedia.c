@@ -97,38 +97,11 @@ long long int atrapa()
 	preguntas p[10];
 	long long int dinero=0;
 	int i,n;
-	strcpy(p[0].pregunta,"Quien escribio La Odisea?");
-	strcpy(p[0].respuesta,"1)Homero 3)Cervantes\n2)Platon 4)Ken Follet");
-	p[0].correcta=1;
-	strcpy(p[1].pregunta,"Como se llama la capital de Mongolia?");
-	strcpy(p[1].respuesta,"1)Pekin 3)Ulan Bator\n2)Islamabad 4)Kabul");
-	p[1].correcta=3;
-	strcpy(p[2].pregunta,"Cual es el rio mas largo del mundo?");
-	strcpy(p[2].respuesta,"1)Yangtse 3)Amazonas\n2)Misisipi 4)Nilo");
-	p[2].correcta=3;
-	strcpy(p[3].pregunta,"Cuando acabo la II Guerra Mundial?");
-	strcpy(p[3].respuesta,"1)1939 3)1969\n2)1945 4)1965");
-	p[3].correcta=2;
-	strcpy(p[4].pregunta,"Donde se encuentra la Sagrada Familia?");
-	strcpy(p[4].respuesta,"1)Barcelona 3)Madrid\n2)Paris 4)Santiago");
-	p[4].correcta=1;
-	strcpy(p[5].pregunta,"Cual es el disco mas vendido de la historia?");
-	strcpy(p[5].respuesta,"1)The Wall 3)Back in Black\n2)The Dark Side of the Moon 4)Thriller");
-	p[5].correcta=4;
-	strcpy(p[6].pregunta,"Que deporte practicaba Michael Jordan?");
-	strcpy(p[6].respuesta,"1)Baloncesto 3)Futbol\n2)Beisbol 4)Golf");
-	p[6].correcta=1;
-	strcpy(p[7].pregunta,"Cual es la moneda del Reino Unido?");
-	strcpy(p[7].respuesta,"1)Euro 3)Yuan\n2)Dollar 4)Libra");
-	p[7].correcta=4;
-	strcpy(p[8].pregunta,"En que lugar del cuerpo se produce la insulina?");
-	strcpy(p[8].respuesta,"1)Bazo 3)Estomago\n2)Pancreas 4)Higado");
-	p[8].correcta=2;
-	strcpy(p[9].pregunta,"De que pais es el futbolista Zlatan Ibrahimovic?");
-	strcpy(p[9].respuesta,"1)Croacia 3)Suecia\n2)Francia 4)Austria");
-	p[9].correcta=3;
-	
+	FILE *pf;
+	pf = fopen("preguntas.txt", "r");
 	for(i=0;i<10;i++)
+		fscanf(pf, " %[^\n]\n%[^;];\n%d",p[i].pregunta,p[i].respuesta,&p[i].correcta);	
+	for(i=0;i<15;i++)
 	{
 		printf("dinero acumulado : %lli$\n\n",dinero);
 		printf("%s \n\n",p[i].pregunta);
