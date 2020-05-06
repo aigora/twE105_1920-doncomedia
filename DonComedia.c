@@ -48,7 +48,7 @@ int main()
 	{
 		system("cls");
     	printf("Perfecto.\nAhora piense en que juego quiere participar:\n\n");
-    	printf("Actualmente disponemos de tragaperras(1), blackjack(2), ruleta(3) o atrapa un millon(4)\n\n");
+    	printf("Actualmente disponemos de tragaperras(1), ruleta(2), blackjack(3) o atrapa un millon(4)\n\n");
     
 		printf("Escribe el numero del juego al que quiere participar porfavor:\n\n");
     	scanf("%i",&op);
