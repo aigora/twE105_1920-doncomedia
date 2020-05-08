@@ -57,25 +57,25 @@ int main()
     	{
     	    case 1:
 			{
-				printf("Has decidido jugar a las tragaperras.\n\n");
+				
 				q->dinero=tragaperras(q->dinero);
 			}
     	    break;
     	    case 2:
         	{
-				printf("Has decidido jugar a la ruleta. Apueste a numeros rojos,negros o a un numero en concreto\n\n");
+				
     	    	q->dinero=ruleta(q->dinero);
 			}
     	    break;
         	case 3:
         	{
-				printf("Has decidido jugar a el blackjack.\n\n");
+				
         		q->dinero=blackjack(q->dinero);
 			}
         	break;
         	case 4:
         	{
-				printf("Has decidido atrapa un millon,consistira en acertar 10 preguntas donde se daran 4 opciones.\nSi acierta la primera pregunta avanzara a la siguiente y lo mas importante ¡Conseguira mas dinero!\n\n");
+		
         		q->dinero=atrapa(q->dinero);
 			}
         	break;
