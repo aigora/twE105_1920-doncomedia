@@ -200,7 +200,109 @@ return dinero;
 }
 long long int ruleta(long long int dinero)
 {
+	int tipo_apuesta,apuesta_inicial,apuesta_final,xx;
+int acierto=0;
+srand(time(NULL));
+int num = rand() % 37;
+int numero;
+
 	
+   system("cls");
+   do
+			{
+				printf("Has decidido jugar a la ruleta. Apueste a numeros rojos,negros o a un numero en concreto\n\n");
+				printf("Tienes %lli$\n\n",dinero);
+				printf(" De cuanto dinero desea realizar la apuesta?\n");
+			
+				scanf("%d",&apuesta_inicial);
+				if (dinero< apuesta_inicial )
+				{
+					printf("No tienes suficiente dinero\n");
+				}
+				else if (dinero>= apuesta_inicial )
+				{
+					dinero-= apuesta_inicial;
+			        printf("Te quedaran %lli$\n ",dinero);
+					apuesta_final = apuesta_inicial;
+					apuesta_final=0;
+				}
+			}while(apuesta_final!=0);
+
+     
+  
+
+
+printf("Seleccione a cual desea efectuar su apuesta mediante el numero indicado\n\n");
+
+while(acierto<1)
+{
+  printf("Numero(1),Par(2),Impar(3):\n");
+  scanf("%i",&tipo_apuesta);
+ if (tipo_apuesta>3){
+
+ printf("Numero incorrecto,seleccione de nuevo el numero que desee\n\n.");
+}
+ else
+ {
+    acierto ++;
+ }
+}	
+
+    if(tipo_apuesta==1)
+            {
+			system("cls");
+			printf("Seleccion el numero que desea:\n\n");
+			scanf("%d",&numero);
+			printf("El numero aleatorio salido es %d\n",num);
+			if (num == numero)
+			{
+			printf("Ha acertado! Es usted increible. ");
+			dinero+=10*apuesta_inicial;
+			printf("Ahora mismo tiene %lli$\n",dinero);
+		    }
+		    else
+		    {
+		    printf("No ha acertado. Pruebe de nuevo!");
+		    printf("Ahora tienes %lli$\n",apuesta_inicial,dinero);
+			}
+		    }
+	else if(tipo_apuesta==2)
+	{
+	
+			system("cls");
+			
+			printf("El numero aleatorio salido es %d\n",num);
+			if (num % 2 == 0)
+			{
+			printf("Es par. Lo ha conseguido!");
+			dinero+= 2*apuesta_inicial;
+			printf("Su dinero actualmente es de %lli$\n",dinero);
+	 	    }
+			else
+			{
+			printf("No ha acertado. Pruebe de nuevo!");
+		    printf("Ha perdido %d$, ahora tienes %lli$\n",apuesta_inicial,dinero);
+			}
+    }
+	else if (tipo_apuesta == 3)
+	{
+	
+			system("cls");
+			printf("El numero aleatorio salido es %d\n",num);
+			if (num % 2 != 0)
+			{
+			printf("Es impar! Lo ha conseguido!");
+			dinero+=2*apuesta_inicial;
+			printf("Su dinero actualmente es de %lli$\n",dinero);
+			}
+			else
+			{
+			printf("No ha acertado. Pruebe de nuevo!");
+		    printf("A perdido %d$, ahora tienes %lli$\n",apuesta_inicial,dinero);
+			}
+	}
+
+return dinero;	
 }
 long long int blackjack(long long int dinero)
 {
