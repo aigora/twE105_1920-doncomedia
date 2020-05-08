@@ -210,7 +210,7 @@ int numero;
    system("cls");
    do
 			{
-				printf("Has decidido jugar a la ruleta. Apueste a numeros rojos,negros o a un numero en concreto\n\n");
+				printf("Has decidido jugar a la ruleta. Apueste a pares,impares o a un numero en concreto\n\n");
 				printf("Tienes %lli$\n\n",dinero);
 				printf(" De cuanto dinero desea realizar la apuesta?\n");
 			
