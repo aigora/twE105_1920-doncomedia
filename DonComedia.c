@@ -4,10 +4,20 @@
 
 typedef struct
 {
+	char carta[100];
+	int valor;
+}cartas;
+
+typedef struct
+{
 	int dia,mes,year,edad;
 	char nombre[30];
 	long long int dinero;
+	cartas j[48];
+	int puntos;
+	int carta1,carta2;
 }jugador;
+
 typedef struct
 {
 	char pregunta[100],respuesta[100];
@@ -200,7 +210,7 @@ return dinero;
 }
 long long int ruleta(long long int dinero)
 {
-	int tipo_apuesta,apuesta_inicial,apuesta_final,xx;
+int tipo_apuesta,apuesta_inicial,apuesta_final,xx;
 int acierto=0;
 srand(time(NULL));
 int num = rand() % 37;
@@ -209,24 +219,24 @@ int numero;
 	
    system("cls");
    do
-			{
-				printf("Has decidido jugar a la ruleta. Apueste a pares,impares o a un numero en concreto\n\n");
-				printf("Tienes %lli$\n\n",dinero);
-				printf(" De cuanto dinero desea realizar la apuesta?\n");
+	{
+		printf("Has decidido jugar a la ruleta. Apueste a pares,impares o a un numero en concreto\n\n");
+		printf("Tienes %lli$\n\n",dinero);
+		printf("De cuanto dinero desea realizar la apuesta?\n");
 			
-				scanf("%d",&apuesta_inicial);
-				if (dinero< apuesta_inicial )
-				{
-					printf("No tienes suficiente dinero\n");
-				}
-				else if (dinero>= apuesta_inicial )
-				{
-					dinero-= apuesta_inicial;
-			        printf("Te quedaran %lli$\n ",dinero);
-					apuesta_final = apuesta_inicial;
-					apuesta_final=0;
-				}
-			}while(apuesta_final!=0);
+		scanf("%d",&apuesta_inicial);
+		if (dinero< apuesta_inicial )
+		{
+			printf("No tienes suficiente dinero\n");
+		}
+		else if (dinero>= apuesta_inicial )
+		{
+			dinero-= apuesta_inicial;
+	        printf("Te quedaran %lli$\n",dinero);
+			apuesta_final = apuesta_inicial;
+			apuesta_final=0;
+		}
+	}while(apuesta_final!=0);
 
      
   
@@ -263,7 +273,7 @@ while(acierto<1)
 		    else
 		    {
 		    printf("No ha acertado. Pruebe de nuevo!");
-		    printf("Ahora tienes %lli$\n",apuesta_inicial,dinero);
+		    printf("Ahora tienes %lli$\n",dinero);
 			}
 		    }
 	else if(tipo_apuesta==2)
@@ -281,7 +291,7 @@ while(acierto<1)
 			else
 			{
 			printf("No ha acertado. Pruebe de nuevo!");
-		    printf("Ha perdido %d$, ahora tienes %lli$\n",apuesta_inicial,dinero);
+		    printf("Ha perdido %d$, ahora tienes %lli$\n",dinero);
 			}
     }
 	else if (tipo_apuesta == 3)
@@ -298,7 +308,7 @@ while(acierto<1)
 			else
 			{
 			printf("No ha acertado. Pruebe de nuevo!");
-		    printf("A perdido %d$, ahora tienes %lli$\n",apuesta_inicial,dinero);
+		    printf("A perdido %d$, ahora tienes %lli$\n",dinero);
 			}
 	}
 
@@ -306,17 +316,157 @@ return dinero;
 }
 long long int blackjack(long long int dinero)
 {
+	system("cls");
+	srand (time(NULL));
+	int i,n,j,apuesta_inicial,apuesta_final;
+	char a;
+	jugador j1,j2;
+	FILE *pf;
+	pf = fopen("cartas.txt","r");
+	for(i=0;i<48;i++)
+	{
+		fscanf(pf,"%d,%[^\n]\n",&j1.j[i].valor,j1.j[i].carta);
+	}
+	fseek(pf, 0, SEEK_SET);
+	for(i=0;i<48;i++)
+	{
+		fscanf(pf,"%d,%[^\n]\n",&j2.j[i].valor,j2.j[i].carta);
+	}
+	fclose(pf);
 	
+	do
+	{
+		printf("Has decidido jugar al Blackjack. Suma cartas hasta llegar a 21 sin pasarte,recuerda que las figuras son 10 puntos\n\n");
+		printf("Tienes %lli$\n\n",dinero);
+		printf("De cuanto dinero desea realizar la apuesta?\n");
+			
+		scanf("%d",&apuesta_inicial);
+		if (dinero< apuesta_inicial )
+		{
+			printf("No tienes suficiente dinero\n");
+		}
+		else if (dinero>= apuesta_inicial )
+		{
+			dinero-= apuesta_inicial;
+	        printf("Te quedaran %lli$\n\n",dinero);
+			apuesta_final = apuesta_inicial;
+			apuesta_final=0;
+		}
+	}while(apuesta_final!=0);
+	
+	j1.puntos=0;
+	j2.puntos=0;
+	i = rand() % 48;
+	j = rand() % 48;
+	printf("Carta del croupier:\n");
+	printf("%s\n\n",j2.j[i].carta);
+	j2.puntos+=j2.j[i].valor+j2.j[j].valor;
+	j2.carta1=j2.j[i].valor;
+	j2.carta2=j2.j[j].valor;
+	j2.j[i].valor=0;
+	j2.j[j].valor=0;
+	i = rand() % 48;
+	n = rand() % 48;
+	printf("Tus cartas:\n");
+	printf("%s\n",j1.j[i].carta);
+	printf("%s\n\n",j1.j[n].carta);
+	j1.puntos+=j1.j[i].valor+j1.j[n].valor;
+	j1.carta1=j1.j[i].valor;
+	j1.carta2=j1.j[n].valor;
+	j1.j[i].valor=0;
+	j1.j[n].valor=0;
+	if ((j1.carta1==1 && j1.carta2==10) || (j1.carta2==1 && j1.carta1==10))
+	{
+		if ((j2.carta1==1 && j2.carta2==10) || (j2.carta2==1 && j2.carta1==10))
+		{
+			printf("El croupier tambien ha hecho blackjack. Has recuperado tus %d$",apuesta_inicial);
+			dinero+=apuesta_inicial;
+			return dinero;
+		}
+		else
+		{
+			printf("Has hecho blackjack. Has ganado %d$",apuesta_inicial*10);
+			dinero+=10*apuesta_inicial;
+			return dinero;
+		}
+	}
+	else
+	{
+		printf("Para pedir mas cartas pulsa '+', cuando no quieras mas pulsa '0'\n");
+		scanf("%c",&a);
+		do
+		{
+			switch (a)
+			{
+				case '+':
+					do
+					{
+						i = rand() % 48;
+					}while (j1.j[i].valor==0);
+					printf("Tu siguiente carta:\n");
+					printf("%s\n",j1.j[i].carta);
+					j1.puntos+=j1.j[i].valor;
+					j1.j[i].valor=0;	
+				break;
+			}
+			scanf("%c",&a);
+		}while (a!='0');
+		printf("Segunda carta del croupier:\n");
+		printf("%s\n\n",j2.j[j].carta);
+		if ((j2.carta1==1 && j2.carta2==10) || (j2.carta2==1 && j2.carta1==10))
+		{
+			printf("El croupier ha hecho blackjack. Has perdido %d$",apuesta_inicial);
+			return dinero;
+		}
+		if (j2.puntos<17)
+		{
+			do
+			{
+				do
+				{
+					i = rand() % 48;
+				}while (j2.j[i].valor==0);
+				printf("Siguiente carta del croupier:\n");
+				printf("%s\n\n",j2.j[i].carta);
+				j2.puntos+=j2.j[i].valor;
+				j2.j[i].valor=0;
+			}while(j2.puntos<17);
+		}
+		
+		printf("Puntuacion del croupier:  %d\n",j2.puntos);
+		printf("Puntuacion del jugador:   %d\n",j1.puntos);
+		if ((j1.puntos==21 && j2.puntos!=21) || (j2.puntos>21 && j1.puntos<21) || (j1.puntos<21 && j2.puntos<21 && j1.puntos>j2.puntos) || (j1.puntos>21 && j2.puntos>21 && j1.puntos<j2.puntos))
+		{
+			printf("Has ganado!!!, Te llevas %d$\n",apuesta_inicial*5);
+			dinero+=5*apuesta_inicial;
+			return dinero;
+		}
+		else if ((j2.puntos==21 && j1.puntos!=21) || (j1.puntos>21 && j2.puntos<21) || (j1.puntos<21 && j2.puntos<21 && j1.puntos<j2.puntos) || (j1.puntos>21 && j2.puntos>21 && j1.puntos>j2.puntos))
+		{
+			printf("Has perdido, Te quedas sin los %d$\n",apuesta_inicial);
+			return dinero;
+		}
+		else if (j1.puntos==j2.puntos)
+		{
+			printf("El croupier y tu habeis empatado. Has recuperado tus %d$\n",apuesta_inicial);
+			dinero+=apuesta_inicial;
+			return dinero;
+		}
+	}
 }
 long long int atrapa(long long int dinero)
 {
 	system("cls");
+	int i,n;
+	printf("Al jugar apostaras todo tu dinero,si no quieres jugar pulsa '0' \n");
+	scanf("%d",&i);
+	if (i==0)
+	return dinero;
 	printf("Por cada respuesta correcta acumularas 100000$\n");
 	printf("Tras la pregunta 5 se te dara la oportunidad de retirar tu dinero o continuar,\n");
 	printf("arriesgandote a perderlo\n\n");
 	preguntas p[10];
 	long long int premio=0;
-	int i,n;
 	FILE *pf;
 	pf = fopen("preguntas.txt", "r");
 	
@@ -349,7 +499,7 @@ long long int atrapa(long long int dinero)
 		else if (n!=p[i].correcta)
 		{
 			system("cls");
-			printf("NO ES CORRECTO. Has perdido tus %lli$\n\n",premio);
+			printf("NO ES CORRECTO. Has perdido los %lli$ acumulados\n\n",premio);
 			return 0;
 		}
 
