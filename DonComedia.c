@@ -50,6 +50,7 @@ int main()
 	q->dinero=1000;
 	if (q->edad<18)
 	printf("Lo siento, si eres menor de edad no puedes jugar\n\n");
+	
 	}
 	while(q->edad<18);
 	
@@ -231,8 +232,9 @@ int numero;
 		}
 		else if (dinero>= apuesta_inicial )
 		{
+			 system("cls");
 			dinero-= apuesta_inicial;
-	        printf("Te quedaran %lli$\n",dinero);
+	        printf("Te quedaran %lli$\n\n",dinero);
 			apuesta_final = apuesta_inicial;
 			apuesta_final=0;
 		}
@@ -260,10 +262,10 @@ while(acierto<1)
 
     if(tipo_apuesta==1)
             {
-			system("cls");
+			
 			printf("Seleccion el numero que desea:\n\n");
 			scanf("%d",&numero);
-			printf("El numero aleatorio salido es %d\n",num);
+			printf("El numero aleatorio generado es:\n ---------%d--------- \n",num);
 			if (num == numero)
 			{
 			printf("Ha acertado! Es usted increible. ");
@@ -279,9 +281,9 @@ while(acierto<1)
 	else if(tipo_apuesta==2)
 	{
 	
-			system("cls");
 			
-			printf("El numero aleatorio salido es %d\n",num);
+			
+			printf("El numero aleatorio generado es:\n ---------%d--------- \n",num);
 			if (num % 2 == 0)
 			{
 			printf("Es par. Lo ha conseguido!");
@@ -297,8 +299,8 @@ while(acierto<1)
 	else if (tipo_apuesta == 3)
 	{
 	
-			system("cls");
-			printf("El numero aleatorio salido es %d\n",num);
+			
+			printf("El numero aleatorio generado es:\n ---------%d--------- \n",num);
 			if (num % 2 != 0)
 			{
 			printf("Es impar! Lo ha conseguido!");
@@ -458,7 +460,7 @@ long long int atrapa(long long int dinero)
 {
 	system("cls");
 	int i,n;
-	printf("Al jugar apostaras todo tu dinero,si no quieres jugar pulsa '0' \n");
+	printf("Al jugar apostaras todo tu dinero,si no quieres jugar pulsa '0', si desea jugar pulse '1'. \n");
 	scanf("%d",&i);
 	if (i==0)
 	return dinero;
