@@ -10,6 +10,13 @@ typedef struct
 
 typedef struct
 {
+char chiste[200];
+int num;
+}chistes;
+
+
+typedef struct
+{
 	int dia,mes,year,edad;
 	char nombre[30];
 	long long int dinero;
@@ -28,6 +35,8 @@ long long int tragaperras(long long int dinero);
 long long int ruleta(long long int dinero);
 long long int blackjack(long long int dinero);
 long long int atrapa(long long int dinero);
+
+char chiste(int v,char b);
 
 int main()
 {
@@ -101,11 +110,52 @@ int main()
 	return 0;
 }
 
+char chiste(int v,char b)
+{
+
+
+	srand(time(NULL));
+int i;
+chistes x[11];
+char n;
+FILE *pf;
+
+
+pf = fopen("chistes.txt","r");
+if (pf == NULL)
+    {
+      printf("Parece que don Comedia no quiere salir a contar uno de sus chistes, lo sentimos.\n");
+      return -1;
+    }
+  else
+  {
+for(i=1;i<11;i++)
+{
+fscanf(pf, "%d.%[^;];\n",&x[i].num,x[i].chiste);
+}
+
+fclose(pf);
+}
+
+
+ n= rand() % 11+1;  
+return  printf("%s\n\n\n",x[n]);
+
+}
+
+
+
+
+
+
+
+
 long long int tragaperras(long long int dinero)
 {
 	system("cls");
 	int a,s,d,q,w,e,z,x,c,i,avances=5;
 	char p='1';
+	int v=0,b=0;
 	srand (time(NULL));
 	a = rand() % 10;
 	s = rand() % 10;
@@ -174,14 +224,24 @@ long long int tragaperras(long long int dinero)
 				{
 					if (a==0)
 					{
-						printf("PREMIO GORDO!!!\nHas ganado 100000$\n");
+						printf("PREMIO GORDO!!!\nHas ganado 100000$\n\n");
 						dinero+=100000;
+						printf("Para celebrarlo Don Comedia contara uno de sus chistes mas exclusivos!\n ");
+						printf("Don Comedia:\n");
+						chiste(v,b);
+						printf("*risas*\n");
+						
 						
 					}
 					else
 					{
-						printf("PREMIO!!!\nHas ganado %d$\n",a*s*d*10);
+						printf("PREMIO!!!\nHas ganado %d$\n\n",a*s*d*10);
 						dinero+=(a*s*d*10);
+						printf("Parece que don comedia quiere quitarle protagonismo con unos de sus chistes!\n");
+						printf("Don Comedia:\n");
+						
+						chiste(v,b);
+						printf("*risas*\n");
 					}
 					avances=0;
 				}
@@ -216,6 +276,7 @@ int acierto=0;
 srand(time(NULL));
 int num = rand() % 37;
 int numero;
+int v=0,b=0;
 
 	
    system("cls");
@@ -242,7 +303,10 @@ int numero;
 
      
   
+printf("Antes de realizar la apuesta le contaremos un chiste para liberar un poco de tension\n\n");
 
+chiste(v,b);
+printf("*carcajadas*\n");
 
 printf("Seleccione a cual desea efectuar su apuesta mediante el numero indicado\n\n");
 
@@ -268,14 +332,15 @@ while(acierto<1)
 			printf("El numero aleatorio generado es:\n ---------%d--------- \n",num);
 			if (num == numero)
 			{
-			printf("Ha acertado! Es usted increible. ");
+			printf("Ha acertado! Es usted increible.\n\n ");
 			dinero+=10*apuesta_inicial;
 			printf("Ahora mismo tiene %lli$\n",dinero);
 		    }
 		    else
 		    {
-		    printf("No ha acertado. Pruebe de nuevo!");
-		    printf("Ahora tienes %lli$\n",dinero);
+		    printf("No ha acertado. Pruebe de nuevo!\n");
+		    
+		    
 			}
 		    }
 	else if(tipo_apuesta==2)
@@ -286,31 +351,33 @@ while(acierto<1)
 			printf("El numero aleatorio generado es:\n ---------%d--------- \n",num);
 			if (num % 2 == 0)
 			{
-			printf("Es par. Lo ha conseguido!");
+			printf("Es par. Lo ha conseguido!\n\n");
 			dinero+= 2*apuesta_inicial;
-			printf("Su dinero actualmente es de %lli$\n",dinero);
+			printf("Su dinero actualmente es de %lli$\n\n",dinero);
 	 	    }
 			else
 			{
-			printf("No ha acertado. Pruebe de nuevo!");
-		    printf("Ha perdido %d$, ahora tienes %lli$\n",dinero);
+			printf("No ha acertado. Pruebe de nuevo!\n");
+			
+		    
 			}
     }
 	else if (tipo_apuesta == 3)
 	{
 	
 			
-			printf("El numero aleatorio generado es:\n ---------%d--------- \n",num);
+			printf("El numero aleatorio generado es:\n ---------%d--------- \n\n",num);
 			if (num % 2 != 0)
 			{
-			printf("Es impar! Lo ha conseguido!");
-			dinero+=2*apuesta_inicial;
+			printf("Es impar! Lo ha conseguido!\n\n");
+			dinero+= 2*apuesta_inicial;
 			printf("Su dinero actualmente es de %lli$\n",dinero);
 			}
 			else
 			{
-			printf("No ha acertado. Pruebe de nuevo!");
-		    printf("A perdido %d$, ahora tienes %lli$\n",dinero);
+			printf("No ha acertado. Pruebe de nuevo!\n");
+			
+		    
 			}
 	}
 
@@ -321,6 +388,7 @@ long long int blackjack(long long int dinero)
 	system("cls");
 	srand (time(NULL));
 	int i,n,j,apuesta_inicial,apuesta_final;
+	int v=0,b=0;
 	char a;
 	jugador j1,j2;
 	FILE *pf;
@@ -346,6 +414,9 @@ long long int blackjack(long long int dinero)
 		if (dinero< apuesta_inicial )
 		{
 			printf("No tienes suficiente dinero\n");
+			printf("No te desanimes! Un chistezito para alegrar esa cara!\n\n");
+			chiste(v,b);
+			printf("Ahora que está más contento realize la apuesta con el dinero que tiené!\n");
 		}
 		else if (dinero>= apuesta_inicial )
 		{
@@ -439,13 +510,23 @@ long long int blackjack(long long int dinero)
 		printf("Puntuacion del jugador:   %d\n",j1.puntos);
 		if ((j1.puntos==21 && j2.puntos!=21) || (j2.puntos>21 && j1.puntos<21) || (j1.puntos<21 && j2.puntos<21 && j1.puntos>j2.puntos) || (j1.puntos>21 && j2.puntos>21 && j1.puntos<j2.puntos))
 		{
-			printf("Has ganado!!!, Te llevas %d$\n",apuesta_inicial*5);
+			
+			printf("Has ganado!!!, Te llevas %d$\n\n",apuesta_inicial*5);
+			
+			printf("Don Comedia esta tan contento que nos va a contar unos de sus chistes!\n\n");
+			printf("Don Comedia:\n");
+			chiste(v,b);
+			printf("*risas falsas en el salón*\n");
 			dinero+=5*apuesta_inicial;
 			return dinero;
 		}
 		else if ((j2.puntos==21 && j1.puntos!=21) || (j1.puntos>21 && j2.puntos<21) || (j1.puntos<21 && j2.puntos<21 && j1.puntos<j2.puntos) || (j1.puntos>21 && j2.puntos>21 && j1.puntos>j2.puntos))
 		{
-			printf("Has perdido, Te quedas sin los %d$\n",apuesta_inicial);
+			printf("Has perdido, Te quedas sin los %d$\n\n",apuesta_inicial);
+			printf("No bajes esos animos, a la siguiente ganaras!\n");
+			printf("A ver si te podemos animar con este chistezito de Don Comedia...\n\n");
+			chiste(v,b);
+			
 			return dinero;
 		}
 		else if (j1.puntos==j2.puntos)
@@ -460,6 +541,12 @@ long long int atrapa(long long int dinero)
 {
 	system("cls");
 	int i,n;
+	int v=0,b=0;
+	printf("Antes de empezar Don Comedia quiere contar unos de sus grandes chistes\n\n");
+	printf("Don Comedia:\n");
+	chiste(v,b);
+	printf("*Algunas personas abandonan la sala,otras aplauden por deber*\n\n");
+	
 	printf("Al jugar apostaras todo tu dinero,si no quieres jugar pulsa '0', si desea jugar pulse '1'. \n");
 	scanf("%d",&i);
 	if (i==0)
